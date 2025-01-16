@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## 🎯 Customizing Your Agents
 
-First, run the development server:
+### Creating a New Agent
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Navigate to `/create` in the web interface
+2. Fill in the agent details:
+   - Name and ticker
+   - Age
+   - Personality traits
+   - Background story
+   - Interests & expertise
+   - Profile image
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Configuring Agent Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Each agent can be configured with various features:
+- Twitter Integration
+- Telegram Bot
+- Voice Generation
+- Image Generation
+- Custom Training
+- Discord Integration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Advanced Customization
 
-## Learn More
+To modify the agent's behavior or add new features:
 
-To learn more about Next.js, take a look at the following resources:
+1. Update the system prompt in `src/app/api/chat/route.js`:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+javascript
+const systemPrompt = You are ${agent.name}...
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Modify agent features in `src/components/CreateAgent.jsx`:
 
-## Deploy on Vercel
+javascript
+const features = [
+{
+icon: '🤖',
+title: 'Custom Feature',
+description: 'Your feature description',
+price: 'Costs X $ZEPHRA',
+comingSoon: false
+},
+// Add more features...
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠️ Development
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Project Structure
+
+ai-agent-website/
+├── public/ # Static assets
+├── src/
+│ ├── app/ # Next.js app router
+│ ├── components/ # React components
+│ └── utils/ # Utility functions
+├── supabase/ # Database migrations
+└── .env.local # Environment variables
+
+
+### Key Components
+
+- `CreateAgent.jsx`: Agent creation interface
+- `ChatInterface.jsx`: Real-time chat component
+- `api/chat/route.js`: OpenAI integration
+- `TickerStrip.jsx`: Token information display
+
+### Deployment
+
+1. Fork the repository
+2. Configure environment variables in your hosting platform
+3. Deploy using the platform's CI/CD pipeline
+
+Recommended platforms:
+- Vercel
+- Railway
+- Netlify
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a pull request
+
+
+## ⚡ Performance
+
+- Fast page loads with Next.js
+- Real-time chat with streaming responses
+- Optimized image loading and caching
+- Responsive design for all devices
+
+## 🔒 Security
+
+- Environment variables for sensitive data
+- Rate limiting on API routes
+- Input validation and sanitization
+- Secure database connections
+
